@@ -61,10 +61,14 @@ The common package contains several interfaces for the general structure.
 ### 2. Java / Backend Stack
 
 **Java**
-- Install JDK 25 via SDKMAN:
+- Install JDK 25 via SDKMAN (macOS/Linux):
   ```
   curl -s "https://get.sdkman.io" | bash
   sdk install java 25.0.2-tem
+  ```
+- Windows: download Temurin 25 from https://adoptium.net/temurin/releases/ or use `winget`:
+  ```
+  winget install EclipseAdoptium.Temurin.25.JDK
   ```
 - Verify: `java -version` — expected: Java 25.x
 
@@ -85,10 +89,15 @@ Axon-specific knowledge is not required. We'll introduce:
 - Event Store usage
 
 ### 4. Frontend Stack (React)
-- Install Node.js 18+ via nvm:
+- Install Node.js 18+ via nvm (macOS/Linux):
   ```
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
   nvm install 18
+  ```
+- Windows: download the installer from https://github.com/coreybutler/nvm-windows/releases, then:
+  ```
+  nvm install 18
+  nvm use 18
   ```
 - Verify: `node -v` and `npm -v`
 
