@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component
 /**
  * Annotation to mark methods that should trigger a client notification via SSE.
  *
- * When applied to a method, a notification will be sent to the specified client session
- * after the method executes successfully.
+ * When applied to a method, a notification will be sent to the specified client session after the
+ * method executes successfully.
  *
  * The session ID can be resolved in multiple ways:
  * - From a method parameter annotated with @SessionId
@@ -40,17 +40,15 @@ import org.springframework.stereotype.Component
 @Retention(AnnotationRetention.RUNTIME)
 annotation class NotifyClient
 
-
 @Aspect
 @Component
 class NotificationInterceptor(val notificationService: SseNotificationService) {
-    @Around(
-        "@annotation(de.eventmodelers.support.notifications.internal.NotifyClient) && @annotation(org.axonframework.eventhandling.EventHandler)"
-    )
-    fun aroundEventHandler(joinPoint: ProceedingJoinPoint): Any? {
-        val metaData = CurrentUnitOfWork.get().message?.metaData // ... use metadata
-        val result = joinPoint.proceed()
-            notificationService.broadcast(Notification(type = "message"))
-        return result
-    }
+  @Around(
+      "@annotation(de.eventmodelers.support.notifications.internal.NotifyClient) && @annotation(org.axonframework.eventhandling.EventHandler)")
+  fun aroundEventHandler(joinPoint: ProceedingJoinPoint): Any? {
+    val metaData = CurrentUnitOfWork.get().message?.metaData // ... use metadata
+    val result = joinPoint.proceed()
+    notificationService.broadcast(Notification(type = "message"))
+    return result
+  }
 }
