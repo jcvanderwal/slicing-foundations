@@ -1,4 +1,4 @@
-Event Sourcing Workshop
+# Event Sourcing Workshop
 
 ## Setup
 Slices are defined as packages in the root package (as specified in the generator).
@@ -25,7 +25,7 @@ If these assumptions are changed, the code may not compile immediately and will 
 Your code guidelines take precedence, so it is expected that the code does not compile right away (however, only small adjustments should be necessary).
 
 ## Starting the application
-To start the service, the ApplicationStarter class in src/test/kotlin can be used. Why is it located in test?
+To start the service, the `ApplicationStarter` class in `src/test/java` can be used. Why is it located in test?
 
 This class starts the complete environment (including Postgres and, if necessary, Kafka via TestContainers).
 
@@ -38,3 +38,13 @@ Aggregates are located in the domain package.
 Each slice has its own isolated package.
 
 The common package contains several interfaces for the general structure.
+
+## Tech stack
+
+- Java 25
+- Spring Boot 3.5
+- Axon Framework 4.12
+- Spring Modulith 1.4
+- PostgreSQL
+- Flyway (migrations)
+- Testcontainers
